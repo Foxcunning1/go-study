@@ -1,8 +1,6 @@
-
 package main
 
 import (
-	"errors"
 	"fmt"
 )
 
@@ -27,12 +25,6 @@ func test() {
 
 
 func main() {
-
-		//test()
-	test3()
-}
-
-func test2()  {
 	//定义一个名称为“variableName”，类型为"type"的变量
 	var a string
 	var b int8
@@ -52,45 +44,5 @@ func test2()  {
 	fmt.Printf("c的值:%d,d的值:%d,e的值:%d\n",vname1,vname2,vname3)
 	fmt.Printf("%d\n",SDY)
 	fmt.Printf("%f\n",Pi)
+	test5()
 }
-
-
-
-//示例代码
-var frenchHello string  // 声明变量为字符串的一般方法
-var emptyString string = ""  // 声明了一个字符串变量，初始化为空字符串
-func test1() {
-	no, yes, maybe := "no", "yes", "maybe"  // 简短声明，同时声明多个变量
-	japaneseHello := "Konichiwa"  // 同上
-	frenchHello = "Bonjour"  // 常规赋值
-	fmt.Printf("c的值:%s,d的值:%s,e的值:%s\n",no, yes, maybe)
-	fmt.Printf("c的值:%s,d的值:%s,e的值:%s\n",japaneseHello, yes, maybe)
-
-
-
-
-}
-
-func test3()  {
-	//var s string = "hello"
-	//s[0] = 'c'
-
-	s := "s我爱组合"
-	//c := []byte(s)  // 将字符串 s 转换为 []byte 类型
-	//c[0] = 'c'
-	//s2 := string(c)  // 再转换回 string 类型
-	//fmt.Printf("%s\n", s2)
-	m := `hello
-	world`
-
-
-	fmt.Printf("s的值:%s\nm的值:%s\n",s[4:],m)
-
-
-	err := errors.New("emit macho dwarf: elf header corrupted")
-	if err != nil {
-		fmt.Print(err)
-	}
-
-}
-
