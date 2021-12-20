@@ -34,7 +34,7 @@ func main() {
 		}
 	}()
 
-	go func() {
+	go func(group *sync.WaitGroup) {
 		j := 'A'
 		for {
 
@@ -43,16 +43,17 @@ func main() {
 				fmt.Print(string(j))
 				j++
 				fmt.Print(string(j))
+				j++
+				numberGoroutine <- true
 			}
 
-			numberGoroutine <- true
-			if j == 'Z' {
-				wg.Done()
+			if j >= 'Z' {
+				group.Done()
 				return
 			}
 		}
 
-	}()
+	}(&wg)
 	numberGoroutine <- true
 
 	wg.Wait()
