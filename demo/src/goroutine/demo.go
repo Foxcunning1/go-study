@@ -14,8 +14,8 @@ import (
 //```
 
 func main() {
-	numberGoroutine := make(chan int, 2)
-	//aGoroutine := make(chan string,2)
+	numberGoroutine := make(chan bool)
+	aGoroutine := make(chan bool)
 	var wg sync.WaitGroup
 
 	wg.Add(1)
@@ -23,23 +23,29 @@ func main() {
 	go func() {
 		i := 1
 		for {
-			fmt.Print(i)
-			numberGoroutine <- i
-			i++
-			numberGoroutine <- i
-			fmt.Print(i)
+			select {
+			case <-numberGoroutine:
+				fmt.Print(i)
+				i++
+				fmt.Print(i)
+				i++
+				aGoroutine <- true
+			}
 		}
 	}()
 
 	go func() {
 		j := 'A'
 		for {
-			select {
-			case <-numberGoroutine:
-				fmt.Print(j)
-			}
-			j++
 
+			select {
+			case <-aGoroutine:
+				fmt.Print(string(j))
+				j++
+				fmt.Print(string(j))
+			}
+
+			numberGoroutine <- true
 			if j == 'Z' {
 				wg.Done()
 				return
@@ -47,6 +53,7 @@ func main() {
 		}
 
 	}()
+	numberGoroutine <- true
 
 	wg.Wait()
 
