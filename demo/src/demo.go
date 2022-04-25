@@ -1,4 +1,3 @@
-
 package main
 
 import (
@@ -28,4 +27,5 @@ const (
 
 func test5() {
 	fmt.Println(a, b, c, d, e, f, g, h, i, j, x, y, z, w, v)
+
 }
