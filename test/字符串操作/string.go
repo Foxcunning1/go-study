@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+	var a [3]int
+	fmt.Println(a)
+	var b = [...]int{1, 2, 3}
+	fmt.Println(b)
+	var c = [...]int{2: 3, 1: 2} // 定义长度为3的int型数组, 元素为 0, 2, 3    : 前面是索引
+	fmt.Println(c)
+	var d = [...]int{1, 2, 4: 5, 6}
+	fmt.Println(d)
+}

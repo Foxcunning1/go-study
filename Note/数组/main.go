@@ -1,8 +1,15 @@
 package main
 
+import (
+	"fmt"
+)
+
 func main() {
-	var a [3]int                    // 定义长度为3的int型数组, 元素全部为0
-	var b = [...]int{1, 2, 3}       // 定义长度为3的int型数组, 元素为 1, 2, 3
-	var c = [...]int{2: 3, 1: 2}    // 定义长度为3的int型数组, 元素为 0, 2, 3
-	var d = [...]int{1, 2, 4: 5, 6} // 定义长度为6的int型数组, 元素为 1, 2, 0, 0, 5, 6
+	fmt.Printf("%#v\n", []byte("Hello, 世界"))
+	fmt.Println("\xe4\xb8\x96")                // 打印: 世
+	fmt.Println("\xe7\x95\x8c")                // 打印: 界
+	fmt.Println("\xe4\x00\x00\xe7\x95\x8cabc") // �界abc
+	for i, c := range "\xe4\x00\x00\xe7\x95\x8cabc" {
+		fmt.Println(i, c)
+	}
 }
