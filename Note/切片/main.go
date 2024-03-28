@@ -1,8 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sync"
+)
+
+var m sync.Map
 
 func main() {
+	m.Load("aa")
 	var (
 		//a []int               // nil切片, 和 nil 相等, 一般用来表示一个不存在的切片
 		//b = []int{}           // 空切片, 和 nil 不相等, 一般用来表示一个空的集合
